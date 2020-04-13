@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         New Userscript
+// @name         Show keywords
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -15,26 +15,21 @@
     //'use strict';
 
     var keywords = function () {
-        let keywords = document.querySelector('.C_a_c');
-        keywords.style.maxHeight = 'none';
+        let keywords = document.querySelector('.oc_x_c');
 
         let parent = keywords.parentNode;
-        let listKeywords = keywords.children[0].children[0].children;
+        let listKeywords = keywords.children;
 
         let newKeywords = document.createElement("p");
 
         let newListKeywords = [...listKeywords]
-        .map(k => k.innerText);
+        .map(k => k.querySelector('.o_button_theme_button').innerText);
         //.map(a => `<a href="/search/${a}">${a}</a>`);
-
-        console.log(newListKeywords);
 
         newKeywords.innerHTML = `${newListKeywords.length} keywords:<br>${newListKeywords.map(a => `<a href="/search/${a}">${a}</a>`).join(', ')}`;
 
         var sortedKeywords = [...newListKeywords];
         sortedKeywords.sort();
-
-        console.log(sortedKeywords);
 
         var usedKeywords = new Array();
 
@@ -58,11 +53,11 @@
         }
 
         let usedKeywordsPar = document.createElement("p");
-        //userKeywords.map(a => `<span>${a}</span>`);
         usedKeywordsPar.innerHTML = `${usedKeywords.length} keywords:<br>${usedKeywords.join(', ')}`;
 
-        parent.appendChild(newKeywords);
-        parent.appendChild(usedKeywordsPar);
+        let imageDescrBlock = document.querySelector('.m_f_s');
+        imageDescrBlock.appendChild(newKeywords);
+        imageDescrBlock.appendChild(usedKeywordsPar);
         parent.removeChild(keywords);
     };
 
