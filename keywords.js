@@ -15,16 +15,15 @@
     //'use strict';
 
     var keywords = function () {
-        let keywords = document.querySelector('.oc_x_c');
+        let keywords = document.querySelector('.C_a_c');
 
         let parent = keywords.parentNode;
-        let listKeywords = keywords.children;
+        let listKeywords = keywords.querySelectorAll('div a');
 
         let newKeywords = document.createElement("p");
 
         let newListKeywords = [...listKeywords]
-        .map(k => k.querySelector('.o_button_theme_button').innerText);
-        //.map(a => `<a href="/search/${a}">${a}</a>`);
+        .map(k => k.innerText);
 
         newKeywords.innerHTML = `${newListKeywords.length} keywords:<br>${newListKeywords.map(a => `<a href="/search/${a}">${a}</a>`).join(', ')}`;
 
@@ -55,9 +54,8 @@
         let usedKeywordsPar = document.createElement("p");
         usedKeywordsPar.innerHTML = `${usedKeywords.length} keywords:<br>${usedKeywords.join(', ')}`;
 
-        let imageDescrBlock = document.querySelector('.m_f_s');
-        imageDescrBlock.appendChild(newKeywords);
-        imageDescrBlock.appendChild(usedKeywordsPar);
+        parent.appendChild(newKeywords);
+        parent.appendChild(usedKeywordsPar);
         parent.removeChild(keywords);
     };
 
