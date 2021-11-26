@@ -15,7 +15,7 @@
     //'use strict';
 
     var keywords = function () {
-        let keywords = document.querySelector('.C_a_c');
+        let keywords = document.querySelector('.C_a_03061');
 
         let parent = keywords.parentNode;
         let listKeywords = keywords.querySelectorAll('div a');
