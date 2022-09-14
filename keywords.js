@@ -6,19 +6,19 @@
 // @author       You
 // @match        https://www.tampermonkey.net/index.php?version=4.8.41&ext=dhdg&updated=true
 // @grant        none
-// @include      https://www.shutterstock.com/image-photo/*
-// @include      https://www.shutterstock.com/image-vector/*
-// @include      https://www.shutterstock.com/image-illustration/*
+// @include      https://www.shutterstock.com/*/image-photo/*
+// @include      https://www.shutterstock.com/*/image-vector/*
+// @include      https://www.shutterstock.com/*/image-illustration/*
 // ==/UserScript==
 
 (function() {
     //'use strict';
 
     var keywords = function () {
-        let keywords = document.querySelector('.C_a_03061');
+        let keywords = document.querySelector(`[data-automation="relatedKeywords"]`);
 
         let parent = keywords.parentNode;
-        let listKeywords = keywords.querySelectorAll('div a');
+        let listKeywords = keywords.querySelectorAll('.MuiCollapse-wrapperInner a');
 
         let newKeywords = document.createElement("p");
 
